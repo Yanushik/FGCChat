@@ -1,5 +1,5 @@
 class ChatController < ApplicationController
   def chatroom
-  @fish = "oaeroaro"
+  @default = "FGC_Cat"
   end
 end
