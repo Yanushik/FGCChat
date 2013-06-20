@@ -1,5 +1,9 @@
 <div id="Title">
 No more "spooby pls" for facebook chat.
-<div id="Title">
+</div>
+<div id="channel">
+<object type="application/x-shockwave-flash" height="378" width="620" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=yanushik" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=yanushik&auto_play=true&start_volume=25" /></object><a href="http://www.twitch.tv/yanushik" class="trk" style="padding:2px 0px 4px; display:block; width:345px; font-weight:normal; font-size:10px; text-decoration:underline; text-align:center;"></a>
+</div>
+<%= link_to 'changechannel' , data:{confirm: 'Are you sure?'}, method: :changechannel,remote: true %></td>
 <br>
 <iframe src="https://kiwiirc.com/client/irc.umich.edu/?nick=<%=@default%>|?#FGC_Chicago" style="border:0; width:100%; height:450px;"></iframe>

@@ -1,11 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
-#require 'rails/all'
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "active_resource/railtie"
-require "rails/test_unit/railtie"
-require "sprockets/railtie"
+require 'rails/all'
+
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -45,7 +41,7 @@ module FGCChat
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
-	config.assets.compile = true
+	
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types
