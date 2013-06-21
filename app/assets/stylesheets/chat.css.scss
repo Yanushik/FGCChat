@@ -3,8 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 html{
 	background-color:#2E2E2E;
+	white-space: nowrap;
+}
+#container{
+	
 
 }
+
 #Title{
 	color: white;
 	font-family:"Arial";
@@ -12,32 +17,42 @@ html{
 	text-align:center;
 }
 #channel{
-	text-align:center;
 	
+	position:relative;
 }
 
 #buttons{
 	text-align:center;
 }
+	ul{
+	width:0px;
+	height: 0px;
+	float: left;
+	
+	}
 
-#tabs{
 	a{
-		color: #000000;
+		width:200px;
+		color: #bbbbbb;
 		text-decoration:none;
 		font-family:"Georgia";
 		padding: 5px
 	}
 	a:hover{
+		width:200px;
 		background-color: #999999;
 	}
 	a:active{
+		width:200px;
 		background-color: #aaaaaa;
 	}
 	li{
+		width:200px;
+		
+		float: left;
 		list-style-type: none;
-		display: inline-block;
-		background-color:#ffffff;
+		padding: 5px;
 		
 	}
+
 	
-}
