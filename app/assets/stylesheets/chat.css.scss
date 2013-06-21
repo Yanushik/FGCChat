@@ -13,4 +13,31 @@ html{
 }
 #channel{
 	text-align:center;
+	
+}
+
+#buttons{
+	text-align:center;
+}
+
+#tabs{
+	a{
+		color: #000000;
+		text-decoration:none;
+		font-family:"Georgia";
+		padding: 5px
+	}
+	a:hover{
+		background-color: #999999;
+	}
+	a:active{
+		background-color: #aaaaaa;
+	}
+	li{
+		list-style-type: none;
+		display: inline-block;
+		background-color:#ffffff;
+		
+	}
+	
 }

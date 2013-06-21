@@ -1,12 +1,54 @@
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+</script>
+<script>
+$(document).ready(function(){
+  $(".btn1").click(function(){
+    $("#channels").slideUp();
+  });
+  $(".btn2").click(function(){
+    $("#channels").slideDown();
+  });
+});
+
+$(function() {
+
+
+$( "#channels" ).tabs();
+$( ".selector" ).tabs({ active: 1 });
+});
+</script>
+</head>
+<body>
+
+
+
+
 <div id="Title">
 No more "spooby pls" for facebook chat.
 <br>
 Twitch features coming soon: Multiple streams to choose from, all major FGC Streams included.
 <br>
+<div id="channels">
+ <ul id="tabs">
+ <% @streamlist.each do |stream|%>
+<li><a href="#channels-<%=stream.id%>"><%=stream.name%></a></li>
+
+ <%end%>
+</ul>
+<% @streamlist.each do |stream|%>
+<div id="channels-<%=stream.id%>" style="width:650px;  margin:0px auto;" >
+<object type="application/x-shockwave-flash" height="378" width="620" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=yanushik" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=<%=stream.url%>&auto_play=true&start_volume=25" /></object><a href="http://www.twitch.tv/<%=stream.url%>" class="trk" style="padding:2px 0px 4px; display:block; width:345px; font-weight:normal; font-size:10px; text-decoration:underline; text-align:center;"></a>
 </div>
-<div id="channel">
-<object type="application/x-shockwave-flash" height="378" width="620" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=yanushik" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=yanushik&auto_play=true&start_volume=25" /></object><a href="http://www.twitch.tv/yanushik" class="trk" style="padding:2px 0px 4px; display:block; width:345px; font-weight:normal; font-size:10px; text-decoration:underline; text-align:center;"></a>
+<% end %>
 </div>
 
+<div id="buttons">
+<button class="btn1">Hide Streams</button>
+<button class="btn2">Watch Streams</button>
+</div>
 <br>
 <iframe src="https://kiwiirc.com/client/irc.eversible.com/?nick=<%=@default%>|?#FGC_Chicago" style="border:0; width:100%; height:600px;"></iframe>
