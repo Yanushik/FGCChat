@@ -27,17 +27,25 @@ $( ".selector" ).tabs( "option", "active", 3 );
 
 
 
-<div id="container">
+
 <div id="Title">
+<h2 id="TitleText">
 No more "spooby pls" for facebook chat.
-<br>
-Twitch features coming soon: Multiple streams to choose from, all major FGC Streams included.
-<br>
+</h2>
+<h2 id="buttons">
+<button class="btn1">Hide Streams</button>
+<button class="btn2">Watch Streams</button>
+</h2>
 <div id="channels">
  <ul id="tabs">
  <li>STREAM LIST</li>
+ <br>
  <% @streamlist.each do |stream|%>
-<li><a href="#channels-<%=stream.id%>"><%=stream.name%></a></li>
+
+ 
+<li><a href="#channels-<%=stream.id%>"><%=stream.name%></a>
+
+ </li>
  <br>
  <%end%>
 </ul>
@@ -48,10 +56,10 @@ Twitch features coming soon: Multiple streams to choose from, all major FGC Stre
 <% end %>
 </div>
 
-<div id="buttons">
-<button class="btn1">Hide Streams</button>
-<button class="btn2">Watch Streams</button>
-</div>
+
 <br>
 </div>
-<iframe src="https://kiwiirc.com/client/irc.eversible.com/?nick=<%=@default%>|?#FGC_Chicago" style="border:0; width:100%; height:400px;"></iframe>
+<div style="font-size:10px;color:#ffffff;text-align:center">
+	Chat not connecting? refreshing the page will choose a new server so give that a try!
+</div>
+<iframe src="https://kiwiirc.com/client/<%=@servers.sample%>/?nick=<%=@default%>|?#FGC_Chicago" style="border:0; width:100%; height:400px;"></iframe>
