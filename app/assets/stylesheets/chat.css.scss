@@ -22,45 +22,43 @@ html{
 #Streamlist{
 	
 }
-#channel{
+
+#channels{
 	
-	position:relative;
-
-	font-size: 15px;
-
 }
-
 #buttons{
 	text-align:center;
 }
 	ul{
-	width:0px;
+	width:100px;
 	height: 0px;
-	float: left;
-	font-size: 20px;
+	
+	font-size: 18px;
 	
 	}
 
 	a{
-		width:200px;
+		width:100px;
 		color: #bbbbbb;
 		text-decoration:none;
 		font-family:"Georgia";
-		padding: 5px
+		
 	}
 	a:hover{
-		width:200px;
+		width:100px;
 		background-color: #999999;
 	}
 	a:active{
-		width:200px;
+		width:100px;
 		background-color: #aaaaaa;
 	}
 	li{
-		width:200px;
-		
+		width:150px;
 		list-style-type: none;
+		padding: 0px;
 		
+	}
+	#channellist{
 		
 	}
 #adminpanels{
