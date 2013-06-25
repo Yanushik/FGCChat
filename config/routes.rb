@@ -1,6 +1,18 @@
 FGCChat::Application.routes.draw do
+  get "streams/addstream"
+  get "streams/newstream"
+  get "streams/index"
+  get "streams/removestream"
+  get "admin/addstream"
+  get "admin/login"
+  get "admin/removestream"
+  get "admin/newstream"
   get "chat/chatroom"
-
+  resources :streams
+  resources :sessions
+  get 'addstream', to: 'streams#newstream', as: 'addstream'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

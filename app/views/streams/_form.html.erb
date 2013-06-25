@@ -1,0 +1,29 @@
+<%= form_for(@stream) do |f| %>
+  <% if @stream.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stream.errors.count, "error") %> prohibited this stream from being saved:</h2>
+
+      <ul>
+      <% @stream.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br /> 
+    <%= f.text_field :url  %>For this field just use the stream username ex:"leveluplive"
+  </div>
+  <div class="field">
+    <%= f.label :misc %><br />
+    <%= f.text_area :misc %> Any details about the stream to be used as "advertisement"
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

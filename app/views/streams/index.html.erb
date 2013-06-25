@@ -1,0 +1,24 @@
+<div id = "adminpanels">
+<table>
+  <tr>
+	
+    <th>Stream Name</th>
+    <th>Stream username</th>
+    <th>MISC</th>
+
+  </tr>
+
+<% @streams.each do |stream| %>
+  <tr>
+    <td><%= stream.name %></td>
+    <td><%= stream.url %></td>
+    <td><%= stream.misc %></td> 
+	<% end %>
+  </tr>
+
+</table>
+
+<br />
+
+<%= link_to 'Home', root_url %>
+</div>
