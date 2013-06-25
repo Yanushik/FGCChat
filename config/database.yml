@@ -19,9 +19,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: FGCDB
+  adapter: sqlite3
+  database: db/development.sqlite3
   pool: 5
-  username: ycerda
-  password: pepsi123
+  timeout: 5000

@@ -1,13 +1,13 @@
 class StreamsController < ApplicationController
-    def addstream
+    def create
     if session[:user_username] != nil
       @stream = Stream.new(params[:stream])
       respond_to do |format|
         if @stream.save
-          format.html { redirect_to root, notice: 'Stream was successfully added.' }
+          format.html { redirect_to root_path, notice: 'Stream was successfully added.' }
           format.json { render json: @stream, status: :created, location: @blog }
         else
-          format.html { render action: "new" }
+          format.html { render action: "newstream" }
           format.json { render json: @stream.errors, status: :unprocessable_entity }
         end
       end
@@ -19,7 +19,6 @@ class StreamsController < ApplicationController
   def newstream
   
     if session[:user_username] != nil
-		
 	  @stream = Stream.new
 	  respond_to do |format|
         format.html # new.html.erb
