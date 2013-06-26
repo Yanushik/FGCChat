@@ -1,15 +1,18 @@
 // Place all the styles related to the chat controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-html{
+html, body{
 	background-color:#2E2E2E;
-	white-space: nowrap;
-}
-#container{
-	
-
+	margin:0;
+        padding:0;
 }
 
+#body{
+    width:1600px;
+    margin: 0 auto;
+    
+    
+}
 #Title{
 	color: white;
 	font-family:"Arial";
@@ -19,51 +22,48 @@ html{
 #TitleText{
 	font-size:20px;
 }
-#Streamlist{
+#streamscontainer{
 	
+}
+#tabs{
+        float:left;
+        width:160px;
 }
 
 #channels{
-	
+	float:left;
+        width:960px;
+        
+        height:452px;
 }
-#buttons{
-	text-align:center;
+#video{
+        float:right;
+        width: 744px;  
+        
+        overflow:hidden;
 }
-	ul{
-	width:100px;
-	height: 0px;
-	
-	font-size: 18px;
-	
-	}
+#chatroom{
+     float:right;
+     width:640px;
+}
 
-	a{
-		width:100px;
-		color: #bbbbbb;
-		text-decoration:none;
-		font-family:"Georgia";
-		
-	}
-	a:hover{
-		width:100px;
-		background-color: #999999;
-	}
-	a:active{
-		width:100px;
-		background-color: #aaaaaa;
-	}
-	li{
-		width:150px;
-		list-style-type: none;
-		padding: 0px;
-		
-	}
-	#channellist{
-		
-	}
 #adminpanels{
 	
 	color: #ffffff;
 	font-size: 20px;
+}
+ul{
+    font-family:"Arial Black";
+    
+    color: #fe3423;
+    list-style-type: none;
+    width:150px;
+    li{
+        width:150px;
+    }
+    a{
+      color: #ffffff;
+      text-decoration:none; 
+    }
 }
 	

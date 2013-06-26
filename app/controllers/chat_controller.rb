@@ -1,6 +1,7 @@
 class ChatController < ApplicationController
   def chatroom
-  @servers = ["irc.arcti.ca"]
+  @servers = [
+    "irc.inet.tele.dk"]
 
   @streamlist = Stream.all
   @default = "FGC_Cat"

@@ -1,6 +1,6 @@
 <head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
-script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 </script>
@@ -8,9 +8,13 @@ script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 $(document).ready(function(){
   $(".btn1").click(function(){
     $("#channels").slideUp();
+    $("#chatroom").width("100%");
+    
   });
   $(".btn2").click(function(){
     $("#channels").slideDown();
+    $("#chatroom").width("640px");
+    
   });
 });
 
@@ -24,42 +28,39 @@ $( ".selector" ).tabs( "option", "active", 3 );
 </script>
 </head>
 <body>
-
-
-
-
+ <div id="body">
 <div id="Title">
-<h2 id="TitleText">
-No more "spooby pls" for facebook chat.
-</h2>
-<h2 id="buttons">
-<button class="btn1">Hide Streams</button>
-<button class="btn2">Watch Streams</button>
-</h2>
-<div id="channels">
+    <h2 id="TitleText">
+      No more "spooby pls" for facebook chat.
+    </h2>
+    <h2 id="buttons">
+      <button class="btn1">Hide Streams</button>
+      <button class="btn2">Watch Streams</button>
+    </h2>
+  </div>
+
+<div id="streamscontainer">  
+  
+  <div id="channels">
  <ul id="tabs">
- <li>STREAM LIST</li>
- <br>
- <% @streamlist.each do |stream|%>
-
+  <li>STREAM LIST</li>
+  <br>
+  <% @streamlist.each do |stream|%> 
+    <li id="channellist"><a href="#channels-<%=stream.id%>"><%=stream.name%></a></li>
+    <br>
+  <%end%>
+ </ul>
+  
+  <div id="video">
+  <% @streamlist.each do |stream|%>
+    <div id="channels-<%=stream.id%>" margin:0px auto;" >
+    <object type="application/x-shockwave-flash" height="454px" width="744px" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=yanushik" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=<%=stream.url%>&auto_play=true&start_volume=25" /></object>
+    </div>
+  <% end %>
+    </div>
+  </div>
+</div>
+    <iframe id ="chatroom" src="https://kiwiirc.com/client/<%=@servers.sample%>/?nick=<%=@default%>|?#FGC_Chicago" style="border:0; width:640px; height:452px;"></iframe>
  
-<li id="channellist"><a href="#channels-<%=stream.id%>"><%=stream.name%></a>
 
- </li>
- <br>
- <%end%>
-</ul>
-<% @streamlist.each do |stream|%>
-<div id="channels-<%=stream.id%>" margin:0px auto;" >
-<object type="application/x-shockwave-flash" height="454px" width="744px" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=yanushik" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=<%=stream.url%>&auto_play=true&start_volume=25" /></object>
-</div>
-<% end %>
-</div>
-
-
-<br>
-</div>
-<div style="font-size:10px;color:#ffffff;text-align:center">
-	Chat not connecting? refreshing the page will choose a new server so give that a try!
-</div>
-<iframe src="https://kiwiirc.com/client/<%=@servers.sample%>/?nick=<%=@default%>|?#FGC_Chicago" style="border:0; width:100%; height:400px;"></iframe>
+  </div>
