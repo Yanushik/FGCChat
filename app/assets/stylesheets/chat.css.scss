@@ -8,7 +8,7 @@ html, body{
 }
 
 #body{
-    width:1600px;
+    width:1775px;
     margin: 0 auto;
     
     
@@ -27,24 +27,24 @@ html, body{
 }
 #tabs{
         float:left;
-        width:160px;
+        width:100px;
 }
 
 #channels{
 	float:left;
-        width:960px;
+        width:1275px;
         
-        height:452px;
+        height:700px;
 }
 #video{
         float:right;
-        width: 744px;  
-        
+        width: 1125px;  
+        height:700px;
         overflow:hidden;
 }
 #chatroom{
      float:right;
-     width:640px;
+     width:500px;
 }
 
 #adminpanels{
@@ -57,11 +57,12 @@ ul{
     
     color: #fe3423;
     list-style-type: none;
-    width:150px;
+    width:100px;
     li{
-        width:150px;
+        width:100px;
     }
     a{
+      width:100px;
       color: #ffffff;
       text-decoration:none; 
     }

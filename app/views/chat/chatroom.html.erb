@@ -13,7 +13,7 @@ $(document).ready(function(){
   });
   $(".btn2").click(function(){
     $("#channels").slideDown();
-    $("#chatroom").width("640px");
+    $("#chatroom").width("350px");
     
   });
 });
@@ -54,13 +54,13 @@ $( ".selector" ).tabs( "option", "active", 3 );
   <div id="video">
   <% @streamlist.each do |stream|%>
     <div id="channels-<%=stream.id%>" margin:0px auto;" >
-    <object type="application/x-shockwave-flash" height="454px" width="744px" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=yanushik" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=<%=stream.url%>&auto_play=true&start_volume=25" /></object>
+    <object type="application/x-shockwave-flash" height="700px" width="1125px" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=yanushik" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=<%=stream.url%>&auto_play=true&start_volume=25" /></object>
     </div>
   <% end %>
     </div>
   </div>
 </div>
-    <iframe id ="chatroom" src="https://kiwiirc.com/client/<%=@servers.sample%>/?nick=<%=@default%>|?##FGC_Chicago" style="border:0; width:640px; height:452px;"></iframe>
+    <iframe id ="chatroom" src="https://kiwiirc.com/client/<%=@servers.sample%>/?nick=<%=@default%>|?##FGC_Chicago" style="border:0; width:500px; height:700px;"></iframe>
  
 
   </div>
