@@ -1,7 +1,7 @@
 class ChatController < ApplicationController
   
   def chatroom
-  @servers = ["irc.efnet.org"
+  @servers = ["irc.freenode.net"
    # "irc.arcti.ca",
     #"irc.choopa.net",
     #"irc.colosolutions.net",
