@@ -34,7 +34,7 @@ html, body{
 #video{
         float:right;
      /*   width: 1125px;*/
-        width: 85%;
+        width: 90%;
        /* height:700px; */
         overflow:hidden;
 }
@@ -51,15 +51,19 @@ html, body{
 }
 #tabs{
      float:left;
-     
-     width:10%;
+     padding-left:5px;
+     width:7%;
      font-family:"Arial Black";
      list-style-type: none;
      color: #ffffff;
+     li{
+        width:7%;
+        padding-left:0px;
+     }
      a{
-     width:10%;
-     text-decoration:none; 
-     color: #ffffff;
+        width:7%;
+        text-decoration:none; 
+        color: #ffffff;
      }
 
 }
