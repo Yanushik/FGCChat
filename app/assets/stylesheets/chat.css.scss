@@ -8,7 +8,8 @@ html, body{
 }
 
 #body{
-    width:1775px;
+  /*  width:1775px;*/
+    width:100%;
     margin: 0 auto;
     
     
@@ -22,29 +23,25 @@ html, body{
 #TitleText{
 	font-size:20px;
 }
-#streamscontainer{
-	
-}
-#tabs{
-        float:left;
-        width:100px;
-}
+
 
 #channels{
 	float:left;
-        width:1275px;
-        
-        height:700px;
+        /*width:1275px;*/
+        width: 70%;
+        /*height:700px;*/
 }
 #video{
         float:right;
-        width: 1125px;  
-        height:700px;
+     /*   width: 1125px;*/
+        width: 85%;
+       /* height:700px; */
         overflow:hidden;
 }
 #chatroom{
      float:right;
-     width:500px;
+     width:30%;
+     /*width:500px;*/
 }
 
 #adminpanels{
@@ -52,19 +49,34 @@ html, body{
 	color: #ffffff;
 	font-size: 20px;
 }
-ul{
-    font-family:"Arial Black";
-    
-    color: #fe3423;
-    list-style-type: none;
-    width:100px;
-    li{
-        width:100px;
-    }
-    a{
-      width:100px;
-      color: #ffffff;
-      text-decoration:none; 
-    }
+#tabs{
+     float:left;
+     
+     width:10%;
+     font-family:"Arial Black";
+     list-style-type: none;
+     color: #ffffff;
+     a{
+     width:10%;
+     text-decoration:none; 
+     color: #ffffff;
+     }
+
 }
+
+@media all and (max-width: 1150px) {
+    #tabs {font-size:10px;
+           width:8%; }
+}
+
+@media all and (max-width: 850px) {
+     #tabs {font-size:6px;
+           width:5%; }
+}
+
+@media all and (max-width: 500px) {
+     #tabs {font-size:4px;
+           width:3%; }
+}  
+
 	
