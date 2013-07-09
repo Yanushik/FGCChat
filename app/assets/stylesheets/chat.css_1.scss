@@ -31,6 +31,7 @@ html, body{
         /*width:1275px;*/
         width: 70%;
         /*height:700px;*/
+
 }
 #channels-1{
 	background-color:#2E2E2E;
@@ -38,6 +39,12 @@ html, body{
         width: 620px;
         height: 378px;
          z-index:4;
+                 #in{
+        
+        color:#ffffff;
+        bottom:10px;
+        right:0;
+        }
 }
 #channels-2{
 	background-color:#2E2E2E;
@@ -46,6 +53,12 @@ html, body{
         height: 378px;
         margin-top: 378px ;
         z-index:3;
+        #in{
+        
+        color:#ffffff;
+        bottom:10px;
+        right:0;
+        }
 }
 #channels-3{
 	background-color:#2E2E2E;
@@ -55,6 +68,12 @@ html, body{
         margin-top: 500px;
         margin-left:600px;
         z-index:2;
+        #in{
+        
+        color:#ffffff;
+        bottom:0;
+        right:0;
+        }
 }
 #video{
         float:right;
