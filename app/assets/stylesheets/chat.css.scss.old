@@ -6,11 +6,14 @@ html, body{
 	margin:0;
         padding:0;
 }
-
+p{
+        color:#ffffff;
+}
 #body{
   /*  width:1775px;*/
     width:100%;
     margin: 0 auto;
+    
     
     
 }

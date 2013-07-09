@@ -6,7 +6,8 @@
 
 <script>
 $(document).ready(function(){
- 
+  $('#channels-1,#channels-2,#channels-3,#channels-4,#channels-5,#channels-6,#channels-7,#channels-8,#channels-9').resizable().draggable({cancel : 'object', stack:"div"});
+
   
   $(".btn1").click(function(){
     $("#channels").slideUp();
@@ -24,10 +25,11 @@ $(document).ready(function(){
 });
 
 $(function() {
-$("#channels-1").resizable().draggable({cancel : 'object'});
-$("#channels-2").resizable().draggable();
-$("#channels-3").resizable().draggable();
+  //var a = 10;
+ // $('#channels-1,#channels-2,#channels-3,#channels-4,#channels-5,#channels-6,#channels-7,#channels-8,#channels-9').resizable().draggable({cancel : 'object';});
 });
+
+
 </script>
 </head>
 <body>
@@ -42,10 +44,13 @@ $("#channels-3").resizable().draggable();
 <div id="streamscontainer">  
   
   <div id="channels">
-
+  <p id="toggle">
+    <button>Official</button>
+    <button>Unofficial</button>
+</p>
   
   <div id="video">
-  
+    <div id="official">
     <div id="channels-1" >
     <object type="application/x-shockwave-flash"  height="95%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=srkevo1" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=srkevo1&auto_play=false&start_volume=100" /></object>
     </div>
@@ -58,9 +63,43 @@ $("#channels-3").resizable().draggable();
 
     </div>
     </div>
+    <div id="unofficial">
+           
+    <div id="channels-4" >
+    <object type="application/x-shockwave-flash"  height="95%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=vgbootcamp" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=vgbootcamp&auto_play=false&start_volume=100" /></object>
+    </div>
+    <div id="channels-5" >
+    <object type="application/x-shockwave-flash"  height="95%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=finestko" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=finestko2&auto_play=false&start_volume=100" /></object>
+    </div>
+    <div id="channels-6" >
+      <object type="application/x-shockwave-flash"  height="95%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=iebattlegrounds" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=iebattlegrounds&auto_play=false&start_volume=100" /></object>
+            <p id="in">Click the grey bar and hold to drag the stream window, resize by clicking on the bottom right</p>
+    </div>
+    <div id="channels-7" >
+    <object type="application/x-shockwave-flash"  height="95%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=teammexicolive" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=teammexicolive&auto_play=false&start_volume=100" /></object>
+    </div>
+    <div id="channels-8" >
+    <object type="application/x-shockwave-flash"  height="95%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=clashtournaments" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=clashtournaments&auto_play=false&start_volume=100" /></object>
+    </div>
+    <div id="channels-9" >
+      <object type="application/x-shockwave-flash"  height="95%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=labzero" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=labzero3&auto_play=false&start_volume=100" /></object>
+            <p id="in">Click the grey bar and hold to drag the stream window, resize by clicking on the bottom right</p>
+        
+    </div>
+         
+    </div>
   </div>
 </div>
+   <div>
     <iframe id ="chatroom" src="https://kiwiirc.com/client/<%=@servers.sample%>/?nick=<%=@default%>|?#FGC_Chicago" style="border:0; width:30%; height:600px;"></iframe>
- 
-
+    
+    </div>
   </div>
+  <script>
+    $('#toggle > button').click(function() {
+    var ix = $(this).index();
+    
+    $('#official').toggle( ix === 0 );
+    $('#unofficial').toggle( ix === 1 );
+});
+    </script>
