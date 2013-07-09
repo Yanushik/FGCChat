@@ -1,0 +1,86 @@
+// Place all the styles related to the chat controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html, body{
+	background-color:#2E2E2E;
+	margin:0;
+        padding:0;
+}
+
+#body{
+  /*  width:1775px;*/
+    width:100%;
+    margin: 0 auto;
+    
+    
+}
+#Title{
+	color: white;
+	font-family:"Arial";
+	text-align:center;
+	font-size:0px;
+}
+#TitleText{
+	font-size:20px;
+}
+
+
+#channels{
+	float:left;
+        /*width:1275px;*/
+        width: 70%;
+        /*height:700px;*/
+}
+#video{
+        float:right;
+     /*   width: 1125px;*/
+        width: 90%;
+       /* height:700px; */
+        overflow:hidden;
+}
+#chatroom{
+     float:right;
+     width:30%;
+     /*width:500px;*/
+}
+
+#adminpanels{
+	
+	color: #ffffff;
+	font-size: 20px;
+}
+#tabs{
+    /* float:left;*/
+    /* padding-left:5px;*/
+     width:7%;
+     font-family:"Arial Black";
+     list-style-type: none;
+     color: #ffffff;
+     li{
+        width:7%;
+        padding-left:0px;
+     }
+     a{
+        width:7%;
+        text-decoration:none; 
+        color: #ffffff;
+     }
+
+}
+
+@media all and (max-width: 1150px) {
+    #tabs {font-size:10px;
+           width:8%; }
+}
+
+@media all and (max-width: 850px) {
+     #tabs {font-size:6px;
+           width:5%; }
+}
+
+@media all and (max-width: 500px) {
+     #tabs {font-size:4px;
+           width:3%; }
+}  
+
+	

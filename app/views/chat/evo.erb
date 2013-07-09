@@ -1,0 +1,64 @@
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/ui-lightness/jquery-ui.css" />
+
+<script>
+$(document).ready(function(){
+ 
+  
+  $(".btn1").click(function(){
+    $("#channels").slideUp();
+    $("#chatroom").width("100%");
+    
+  });
+  $(".btn2").click(function(){
+    $("#channels").slideDown();
+    $("#chatroom").width("30%");
+    
+  });
+  
+ 
+  
+});
+
+$(function() {
+$("#channels-1").resizable().draggable({cancel : 'object'});
+$("#channels-2").resizable().draggable();
+$("#channels-3").resizable().draggable();
+});
+</script>
+</head>
+<body>
+ <div id="body">
+<div id="Title">
+    <h2 id="TitleText">
+      
+    </h2>
+    
+  </div>
+
+<div id="streamscontainer">  
+  
+  <div id="channels">
+
+  
+  <div id="video">
+  
+    <div id="channels-1" >
+    <object type="application/x-shockwave-flash"  height="95%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=srkevo1" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=srkevo1&auto_play=false&start_volume=100" /></object>
+    </div>
+    <div id="channels-2" >
+    <object type="application/x-shockwave-flash"  height="95%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=srkevo2" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=srkevo2&auto_play=false&start_volume=100" /></object>
+    </div>
+    <div id="channels-3" >
+    <object type="application/x-shockwave-flash"  height="95%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=srkevo3" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=srkevo3&auto_play=false&start_volume=100" /></object>
+    </div>
+    </div>
+  </div>
+</div>
+    <iframe id ="chatroom" src="https://kiwiirc.com/client/<%=@servers.sample%>/?nick=<%=@default%>|?#FGC_Chicago" style="border:0; width:30%; height:600px;"></iframe>
+ 
+
+  </div>

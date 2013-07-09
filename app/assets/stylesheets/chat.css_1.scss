@@ -5,6 +5,7 @@ html, body{
 	background-color:#2E2E2E;
 	margin:0;
         padding:0;
+       background-image:url('http://www.sdtekken.com/wp-content/uploads/2013/01/evo-2012-championship-series-logo.jpg');
 }
 
 #body{
@@ -31,10 +32,34 @@ html, body{
         width: 70%;
         /*height:700px;*/
 }
+#channels-1{
+	background-color:#2E2E2E;
+        position:absolute;
+        width: 620px;
+        height: 378px;
+         z-index:4;
+}
+#channels-2{
+	background-color:#2E2E2E;
+        position:absolute;
+         width: 620px;
+        height: 378px;
+        margin-top: 378px ;
+        z-index:3;
+}
+#channels-3{
+	background-color:#2E2E2E;
+        position:absolute;
+         width: 620px;
+        height: 378px;
+        margin-top: 500px;
+        margin-left:600px;
+        z-index:2;
+}
 #video{
         float:right;
      /*   width: 1125px;*/
-        width: 90%;
+        width: 100%;
        /* height:700px; */
         overflow:hidden;
 }
@@ -49,25 +74,8 @@ html, body{
 	color: #ffffff;
 	font-size: 20px;
 }
-#tabs{
-     float:left;
-     padding-left:5px;
-     width:7%;
-     font-family:"Arial Black";
-     list-style-type: none;
-     color: #ffffff;
-     li{
-        width:7%;
-        padding-left:0px;
-     }
-     a{
-        width:7%;
-        text-decoration:none; 
-        color: #ffffff;
-     }
 
-}
-
+/*
 @media all and (max-width: 1150px) {
     #tabs {font-size:10px;
            width:8%; }
@@ -82,5 +90,5 @@ html, body{
      #tabs {font-size:4px;
            width:3%; }
 }  
-
+*/
 	

@@ -8,6 +8,7 @@ FGCChat::Application.routes.draw do
   get "admin/removestream"
   get "admin/newstream"
   get "chat/chatroom"
+  get "chat/evo"
   resources :streams
   resources :sessions
   get 'addstream', to: 'streams#newstream', as: 'addstream'
@@ -62,8 +63,8 @@ FGCChat::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'chat#chatroom'
-	
+  #root :to => 'chat#chatroom'
+	root :to => 'chat#evo'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
