@@ -1,66 +1,83 @@
 <head>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/ui-lightness/jquery-ui.css" />
 
 </script>
 <script>
 $(document).ready(function(){
+  <% @streamlist.each do |stream|%>
+    $('#channels-<%=stream.id%>').resizable().draggable({cancel : 'object', stack:"div"});  
+     $('#channels-<%=stream.id%>').hide();
+    $('.channel-<%=stream.id%>').click(function(){
+      $('#channels-<%=stream.id%>').toggle('fast');
+    });
+    
+  <%end%>
+  varx = 0;  
+  
+  
   $(".btn1").click(function(){
-    $("#channels").slideUp();
-    $("#chatroom").width("100%");
+    $("#channels").toggle('fast',function(){
+      if(varx<1)
+      {
+        $("#chatroom").animate({width:"100%"});
+        varx = varx+1;
+        document.getElementById('btn').innerHTML = 'Watch Stream';
+      }
+      else
+      {
+        varx = varx-1; 
+        $("#chatroom").animate({width:"29%"});
+        document.getElementById('btn').innerHTML = 'Watch Stream';
+      }
+    }
+  );
+    
     
   });
-  $(".btn2").click(function(){
-    $("#channels").slideDown();
-    $("#chatroom").width("30%");
-    
-  });
+
 });
 
 $(function() {
 
 
-$( "#channels" ).tabs();
-var currentActive = $( ".selector" ).tabs( "option", "active" );
-$( ".selector" ).tabs( "option", "active", 3 );
+
 });
 </script>
 </head>
 <body>
  <div id="body">
 <div id="Title">
-    <h2 id="TitleText">
-      No more "spooby pls" for facebook chat.
-    </h2>
-    <h2 id="buttons">
-      <button class="btn1">Hide Streams</button>
-      <button class="btn2">Watch Streams</button>
-    </h2>
-  </div>
+  
+  <li style="color:#FE3423;"><b>STREAM LIST</b></li>
+  <br>
+  <% @streamlist.each do |stream|%> 
+    <li id="channellist"><button id="channellist"class="channel-<%=stream.id%>" style="background: url(<%=stream.misc%>);background-size:100%;"></button></li>
+    
+  <%end%>
+</ul>
+    <p id="buttons">
+      <button class="btn1" id="btn">Hide Streams</button>
+      
+    </p>
+</div>
 
 <div id="streamscontainer">  
   
   <div id="channels">
- <ul id="tabs">
-  <li style="color:#FE3423;"><b>STREAM LIST</b></li>
-  <br>
-  <% @streamlist.each do |stream|%> 
-    <li id="channellist"><a href="#channels-<%=stream.id%>"><%=stream.name%></a></li>
-    <br>
-  <%end%>
- </ul>
+
   
   <div id="video">
   <% @streamlist.each do |stream|%>
-    <div id="channels-<%=stream.id%>" >
-    <object type="application/x-shockwave-flash"  height="600px" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=yanushik" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=<%=stream.url%>&auto_play=true&start_volume=100" /></object>
+    <div id="channels-<%=stream.id%>" style="background-color:#EDEDED;position:absolute;width:620px;height: 378px;z-index:4;color:#ffffff; border-bottom-left-radius:10px;">
+      <object type="application/x-shockwave-flash"  height="96%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=yanushik" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=<%=stream.url%>&auto_play=true&start_volume=100" /></object>
     </div>
   <% end %>
     </div>
   </div>
 </div>
     <iframe id ="chatroom" src="https://kiwiirc.com/client/<%=@servers.sample%>/?nick=<%=@default%>|?#FGC_Chicago" style="border:0; width:30%; height:600px;"></iframe>
-    <p>test</p>
+   
 
   </div>

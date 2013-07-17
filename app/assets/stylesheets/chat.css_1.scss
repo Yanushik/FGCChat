@@ -23,10 +23,10 @@ p{
     color:#eeeeee;
 }
 #Title{
-	color: white;
+	
 	font-family:"Arial";
 	text-align:center;
-	font-size:0px;
+	
 }
 #TitleText{
 	font-size:20px;
@@ -40,6 +40,8 @@ p{
         /*height:700px;*/
 
 }
+
+/*
 #channels-1{
 	background-color:#2E2E2E;
         position:absolute;
@@ -168,6 +170,7 @@ p{
         right:0;
         }
 }
+*/
 #video{
         float:right;
      /*   width: 1125px;*/
@@ -187,20 +190,12 @@ p{
 	font-size: 20px;
 }
 
-/*
-@media all and (max-width: 1150px) {
-    #tabs {font-size:10px;
-           width:8%; }
+#channellist{
+    display:inline;  
+    width:50px;
+    height:50px;
 }
-
-@media all and (max-width: 850px) {
-     #tabs {font-size:6px;
-           width:5%; }
+#tabs{
+    
 }
-
-@media all and (max-width: 500px) {
-     #tabs {font-size:4px;
-           width:3%; }
-}  
-*/
 	
