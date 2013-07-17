@@ -11,24 +11,29 @@ $(document).ready(function(){
     var v<%=stream.id%> = new Object();
     v<%=stream.id%>["dragged"]= 'false';
      v<%=stream.id%>["firstmove"]= 'false';
+     v<%=stream.id%>["firstopen"]="false"
     $('#channels-<%=stream.id%>').resizable().draggable({cancel : 'object', stack:"div", stop:function(event,ui){v<%=stream.id%>["dragged"] = 'true';if( v<%=stream.id%>["firstmove"]== 'false'){counter=counter-378;v<%=stream.id%>["firstmove"]='true'; }}});
     $('#channels-<%=stream.id%>').on( "dragstop", function( event, ui ) {} );
     $('#channels-<%=stream.id%>').hide();
     $('.channel-<%=stream.id%>').click(function(){
-      $('#channels-<%=stream.id%>').toggle('fast',function(){
+      $('#channels-<%=stream.id%>').toggle(10,function(){
         if ($('#channels-<%=stream.id%>').is(":hidden")){
-          
           if(v<%=stream.id%>["dragged"] == 'false'){
             counter = counter-378;
-           $('#channels-<%=stream.id%>').animate({top:counter});
+           
            }
           }
         else{
-          
           if(v<%=stream.id%>["dragged"] == 'false'){
+            if(counter == 0){
+              counter = counter+530;
+            }
+            else{
+            
+            $('#channels-<%=stream.id%>').animate({top:counter});
             counter = counter+378;
-          $('#channels-<%=stream.id%>').animate({top:counter});
-          }
+            }
+            }
         }
       
       });});   
