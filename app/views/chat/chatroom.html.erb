@@ -5,38 +5,52 @@
 
 </script>
 <script>
+
+  
 $(document).ready(function(){
   counter = 0;
+  order   = 0;
+  var positions = new Array();
+  positions.push(3176,3176,3176,3176,3176,2798,2420,2042,1664,1286,908,530,150);
   <% @streamlist.each do |stream|%>
     var v<%=stream.id%> = new Object();
     v<%=stream.id%>["dragged"]= 'false';
      v<%=stream.id%>["firstmove"]= 'false';
-     v<%=stream.id%>["firstopen"]="false"
-    $('#channels-<%=stream.id%>').resizable().draggable({cancel : 'object', stack:"div", stop:function(event,ui){v<%=stream.id%>["dragged"] = 'true';if( v<%=stream.id%>["firstmove"]== 'false'){counter=counter-378;v<%=stream.id%>["firstmove"]='true'; }}});
+     v<%=stream.id%>["firstopen"]="false";
+      v<%=stream.id%>["position"];
+    $('#channels-<%=stream.id%>').resizable().draggable({cancel : 'object', stack:"div", stop:function(event,ui){v<%=stream.id%>["dragged"] = 'true';if( v<%=stream.id%>["firstmove"]== 'false'){v<%=stream.id%>["firstmove"]='true'; positions.push(v<%=stream.id%>["position"]);}}});
     $('#channels-<%=stream.id%>').on( "dragstop", function( event, ui ) {} );
     $('#channels-<%=stream.id%>').hide();
     $('.channel-<%=stream.id%>').click(function(){
-      $('#channels-<%=stream.id%>').toggle(10,function(){
+      $('button').attr('disabled',true);
+      $('#channels-<%=stream.id%>').toggle(0,function(){
         if ($('#channels-<%=stream.id%>').is(":hidden")){
-          if(v<%=stream.id%>["dragged"] == 'false'){
-            counter = counter-378;
-           
+          if(v<%=stream.id%>["dragged"] == 'false' ){
+            
+            positions.push(v<%=stream.id%>["position"]);           
+            positions.sort(sortNumber);
+            positions.reverse();
+            
+           }
+          
+           else
+           {
            }
           }
-        else{
-          if(v<%=stream.id%>["dragged"] == 'false'){
-            if(counter == 0){
-              counter = counter+530;
-            }
-            else{
+        else{  
+            if (v<%=stream.id%>["dragged"] == 'false'){        
             
-            $('#channels-<%=stream.id%>').animate({top:counter});
-            counter = counter+378;
-            }
-            }
-        }
-      
-      });});   
+            positions.sort(sortNumber);
+            positions.reverse();
+             v<%=stream.id%>["position"] = positions.pop();
+              $('#channels-<%=stream.id%>').animate({top: v<%=stream.id%>["position"]}); 
+                 }
+             }
+           }
+            );$('button').attr('disabled',false);}
+            );
+            
+        
   <%end%>
   varx = 0;  
   
@@ -63,11 +77,9 @@ $(document).ready(function(){
 
 });
 
-$(function() {
-
-
-
-});
+function sortNumber(a,b){
+  return a-b;
+};
 </script>
 </head>
 <body>
