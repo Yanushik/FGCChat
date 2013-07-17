@@ -50,7 +50,7 @@ $(function() {
  <div id="body">
 <div id="Title">
   
-  <li style="color:#FE3423;"><b>STREAM LIST</b></li>
+  
   <br>
   <% @streamlist.each do |stream|%> 
     <li id="channellist"><button id="channellist"class="channel-<%=stream.id%>" style="background: url(<%=stream.misc%>);background-size:100%;"></button></li>
@@ -72,6 +72,7 @@ $(function() {
   <% @streamlist.each do |stream|%>
     <div id="channels-<%=stream.id%>" style="background-color:#EDEDED;position:absolute;width:620px;height: 378px;z-index:4;color:#ffffff; border-bottom-left-radius:10px;">
       <object type="application/x-shockwave-flash"  height="96%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=yanushik" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=<%=stream.url%>&auto_play=true&start_volume=100" /></object>
+      <b><p style="vertical-align: bottom; margin-top:-3px; color:#000;font-size:10px;">USE THIS BAR TO MOVE AND RESIZE THE STREAM</p></b>
     </div>
   <% end %>
     </div>
