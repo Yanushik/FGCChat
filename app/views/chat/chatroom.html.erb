@@ -1,30 +1,72 @@
 <head>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/ui-lightness/jquery-ui.css" />
 
 </script>
 <script>
 
-  
 $(document).ready(function(){
+  
+  var storedlayout = JSON.parse(localStorage.getItem("streamlayout"));
+  var chatposition = JSON.parse(localStorage.getItem("chatposition"));
   counter = 0;
   order   = 0;
   var positions = new Array();
+  var streamArray = new Array();
+  var chat = new Object();
+  chat["x"];
+  chat["y"];
+  chat["width"];
+  chat["height"];
+  chat["div"] = '#chatroom';
+  chat["dragged"]='true';
+  chat["preset"] ='false';
+  if(chatposition != null){
+    $('#chatroom').css("float","none");
+    $('#chatroom').css("position","absolute");
+    $('#chatroom').fadeOut(0);
+    $('#chatroom').animate({top: chatposition["y"]},0);
+    $('#chatroom').animate({left:chatposition["x"]},0);
+    $('#chatroom').animate({width:chatposition["width"]},0);
+    $('#chatroom').animate({height:chatposition["height"]},0);
+    $('#chatroom').fadeIn(1000);
+  }
+  
   positions.push(3176,3176,3176,3176,3176,2798,2420,2042,1664,1286,908,530,150);
-  $('#chatroom').resizable().draggable();
+    
+    $('#chatroom').resizable().draggable({stop:function(event,ui){chat["dragged"]='true';}});
+    $('#chatroom').on( "dragstop", function( event, ui ) {} );
+
+  
   <% @streamlist.each do |stream|%>
     var v<%=stream.id%> = new Object();
-    v<%=stream.id%>["dragged"]= 'false';
+    
+     v<%=stream.id%>["dragged"]= 'false';
+     v<%=stream.id%>["preset"]= 'false';
+     v<%=stream.id%>["draggedagain"]= 'false';
      v<%=stream.id%>["firstmove"]= 'false';
      v<%=stream.id%>["firstopen"]="false";
-      v<%=stream.id%>["position"];
+    
+     v<%=stream.id%>["position"];
+     v<%=stream.id%>["div"]= "#channels-<%=stream.id%>";
+     v<%=stream.id%>["width"];
+     v<%=stream.id%>["height"];
+     v<%=stream.id%>["x"];
+     v<%=stream.id%>["y"];
+        
     $('#channels-<%=stream.id%>').resizable().draggable({cancel : 'object', stack:"div", stop:function(event,ui){v<%=stream.id%>["dragged"] = 'true';if( v<%=stream.id%>["firstmove"]== 'false'){v<%=stream.id%>["firstmove"]='true'; positions.push(v<%=stream.id%>["position"]);}}});
     $('#channels-<%=stream.id%>').on( "dragstop", function( event, ui ) {} );
     $('#channels-<%=stream.id%>').hide();
+    
     $('.channel-<%=stream.id%>').click(function(){
       $('button').attr('disabled',true);
       $('#channels-<%=stream.id%>').toggle(0,function(){
+            if(storedlayout != null){
+               v<%=stream.id%>["dragged"] = storedlayout[<%=stream.id%>-1]["dragged"];
+               v<%=stream.id%>["preset"] = storedlayout[<%=stream.id%>-1]["preset"];
+            }
+        
         if ($('#channels-<%=stream.id%>').is(":hidden")){
           if(v<%=stream.id%>["dragged"] == 'false' ){
             
@@ -39,28 +81,71 @@ $(document).ready(function(){
            }
           }
         else{  
-            if (v<%=stream.id%>["dragged"] == 'false'){        
+            if (v<%=stream.id%>["dragged"] == 'false' ){        
             
             positions.sort(sortNumber);
             positions.reverse();
              v<%=stream.id%>["position"] = positions.pop();
               $('#channels-<%=stream.id%>').animate({top: v<%=stream.id%>["position"]}); 
-                 }
+             }
+            
+            else if(v<%=stream.id%>["preset"] == 'true' && v<%=stream.id%>["draggedagain"]=='false')
+              {
+                
+                $('#channels-<%=stream.id%>').animate({top:storedlayout[<%=stream.id%>-1]["y"]},"fast");
+                $('#channels-<%=stream.id%>').animate({left:storedlayout[<%=stream.id%>-1]["x"]},"fast");
+                $('#channels-<%=stream.id%>').animate({width:storedlayout[<%=stream.id%>-1]["width"]},"fast");
+                $('#channels-<%=stream.id%>').animate({height:storedlayout[<%=stream.id%>-1]["height"]},"fast");
+                $('#channels-<%=stream.id%>').fadeIn(100);
+                v<%=stream.id%>["draggedagain"] == 'true';
              }
            }
-            );$('button').removeAttr('disabled');}
-            );
+            $('button').removeAttr('disabled');
+            });});
             
-        
+            
+   streamArray.push(v<%=stream.id%>);
   <%end%>
-  varx = 0;  
+   
+  $(".save").click(function(){
+    for (var i = 0;i<streamArray.length;i++){
+      var sp = $(streamArray[i]["div"]).position();
+      streamArray[i]["x"] = sp.left;
+      streamArray[i]["y"] = sp.top;
+      streamArray[i]["height"] = $(streamArray[i]["div"]).height();
+      streamArray[i]["width"] = $(streamArray[i]["div"]).width();
+      if(streamArray[i]["dragged"] == 'true'){
+        streamArray[i]["preset"] = 'true';
+      }
+      
+      }
+      if(chat["dragged"]=='true'){
+        var sp = $(chat["div"]).position();
+        chat["x"] = sp.left;
+        chat["y"] = sp.top;
+        chat["width"] = $(chat["div"]).width();
+        chat["height"] = $(chat["div"]).height();
+    }
+   
+    localStorage.setItem("streamlayout", JSON.stringify(streamArray));
+    localStorage.setItem("chatposition", JSON.stringify(chat));
+    alert("Layout Saved");
+  });
   
-  
+  $(".delete").click(function(){
+    localStorage.setItem("streamlayout", null);
+    localStorage.setItem("chatposition", null);
+    alert("Refresh to return to original layout");
+    
+  });
+   varx = 0;
   $(".btn1").click(function(){
     $("#channels").toggle('fast',function(){
       if(varx<1)
       {
+        
         $("#chatroom").animate({width:"100%"});
+        $("#chatroom").animate({height:"100%"});
         varx = varx+1;
         document.getElementById('btn').innerHTML = 'Watch Streams';
       }
@@ -95,7 +180,7 @@ function sortNumber(a,b){
   <%end%>
 </ul>
     <p id="buttons">
-      <button class="btn1" id="btn">Hide Streams</button>
+      <!--<button class="btn1" id="btn">Hide Streams</button>-->
       
     </p>
 </div>
@@ -109,7 +194,7 @@ function sortNumber(a,b){
   <% @streamlist.each do |stream|%>
     <div id="channels-<%=stream.id%>" style="background-color:#EDEDED;position:absolute;width:620px;height: 378px;z-index:4;color:#ffffff; border-bottom-left-radius:10px;">
       <object type="application/x-shockwave-flash"  height="96%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=yanushik" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=<%=stream.url%>&auto_play=true&start_volume=100" /></object>
-      <b><p style="vertical-align: bottom; margin-top:-3px; color:#000;font-size:10px;">USE THIS BAR TO MOVE AND RESIZE THE STREAM</p></b>
+      <b> <p style="vertical-align: bottom; margin-top:-3px; color:#000;font-size:10px;">USE THIS BAR TO MOVE AND RESIZE THE STREAM</p></b>
     </div>
   <% end %>
     </div>
@@ -117,6 +202,7 @@ function sortNumber(a,b){
 </div>
    <div id="chatroom">
     <iframe id ="chatroom" src="https://kiwiirc.com/client/<%=@servers.sample%>/?nick=<%=@default%>|?#FGC_Chicago" style="border:0; width:100%; height:96%;"></iframe>
+    <button style="vertical-align:bottom;"class="save" id="save">Save Current Layout</button><button style="vertical-align:bottom;"class="delete" id="delete">Delete Save</button>
    </div>
 
   </div>
