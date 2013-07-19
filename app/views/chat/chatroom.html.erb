@@ -91,7 +91,6 @@ $(document).ready(function(){
              v<%=stream.id%>["position"] = positions.pop();
               $('#channels-<%=stream.id%>').animate({top: v<%=stream.id%>["position"]}); 
              }
-            
             else if(v<%=stream.id%>["preset"] == 'true' && v<%=stream.id%>["draggedagain"]=='false')
               {
                 
@@ -103,12 +102,10 @@ $(document).ready(function(){
                         $('#channels-<%=stream.id%>').animate({width:storedlayout[i]["width"]},"fast");
                         $('#channels-<%=stream.id%>').animate({height:storedlayout[i]["height"]},"fast");
                         $('#channels-<%=stream.id%>').fadeIn(100);
-                      }
-                      else{
-                      
+                        v<%=stream.id%>["draggedagain"] = 'true';
                       }
                  }
-                v<%=stream.id%>["draggedagain"] == 'true';
+                
                 
              }
            }
