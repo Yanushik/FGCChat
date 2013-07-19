@@ -10,6 +10,7 @@ $(document).ready(function(){
   $( document ).tooltip({tooltipClass:"tooltips"});
   var storedlayout = JSON.parse(localStorage.getItem("streamlayout"));
   var chatposition = JSON.parse(localStorage.getItem("chatposition"));
+  
   counter = 0;
   order   = 0;
   var positions = new Array();
@@ -75,10 +76,7 @@ $(document).ready(function(){
             positions.reverse();
             
            }
-          
-           else
-           {
-           }
+           
           }
         else{  
             if (v<%=stream.id%>["dragged"] == 'false' ){        
@@ -108,6 +106,7 @@ $(document).ready(function(){
   <%end%>
    
   $(".save").click(function(){
+    localStorage.clear();
     for (var i = 0;i<streamArray.length;i++){
       var sp = $(streamArray[i]["div"]).position();
       streamArray[i]["x"] = sp.left;
@@ -133,8 +132,8 @@ $(document).ready(function(){
   });
   
   $(".delete").click(function(){
-    localStorage.setItem("streamlayout", null);
-    localStorage.setItem("chatposition", null);
+    localStorage.clear();
+    
     alert("Refresh to return to original layout");
     
   });
