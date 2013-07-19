@@ -39,10 +39,10 @@ $(document).ready(function(){
     $('#chatroom').resizable().draggable({stop:function(event,ui){chat["dragged"]='true';}});
     $('#chatroom').on( "dragstop", function( event, ui ) {} );
 
-  
+  streamcounter = 0
   <% @streamlist.each do |stream|%>
     var v<%=stream.id%> = new Object();
-    
+     
      v<%=stream.id%>["dragged"]= 'false';
      v<%=stream.id%>["preset"]= 'false';
      v<%=stream.id%>["draggedagain"]= 'false';
@@ -64,8 +64,13 @@ $(document).ready(function(){
       $('button').attr('disabled',true);
       $('#channels-<%=stream.id%>').toggle(0,function(){
             if(storedlayout != null){
-               v<%=stream.id%>["dragged"] = storedlayout[<%=stream.id%>-1]["dragged"];
-               v<%=stream.id%>["preset"] = storedlayout[<%=stream.id%>-1]["preset"];
+               for (var i = 0;i<streamArray.length;i++){
+                 if (storedlayout[i]["div"] == v<%=stream.id%>["div"]){
+                  v<%=stream.id%>["dragged"] = storedlayout[i]["dragged"];
+                  v<%=stream.id%>["preset"] = storedlayout[i]["preset"];
+                  
+                }
+               }
             }
         
         if ($('#channels-<%=stream.id%>').is(":hidden")){
@@ -90,18 +95,27 @@ $(document).ready(function(){
             else if(v<%=stream.id%>["preset"] == 'true' && v<%=stream.id%>["draggedagain"]=='false')
               {
                 
-                $('#channels-<%=stream.id%>').animate({top:storedlayout[<%=stream.id%>-1]["y"]},"fast");
-                $('#channels-<%=stream.id%>').animate({left:storedlayout[<%=stream.id%>-1]["x"]},"fast");
-                $('#channels-<%=stream.id%>').animate({width:storedlayout[<%=stream.id%>-1]["width"]},"fast");
-                $('#channels-<%=stream.id%>').animate({height:storedlayout[<%=stream.id%>-1]["height"]},"fast");
-                $('#channels-<%=stream.id%>').fadeIn(100);
+                  for (var i = 0;i<storedlayout.length;i++){
+                      if('#channels-<%=stream.id%>' ==  storedlayout[i]['div']){
+                        console.log('found it');
+                        $('#channels-<%=stream.id%>').animate({top:storedlayout[i]["y"]},"fast");
+                        $('#channels-<%=stream.id%>').animate({left:storedlayout[i]["x"]},"fast");
+                        $('#channels-<%=stream.id%>').animate({width:storedlayout[i]["width"]},"fast");
+                        $('#channels-<%=stream.id%>').animate({height:storedlayout[i]["height"]},"fast");
+                        $('#channels-<%=stream.id%>').fadeIn(100);
+                      }
+                      else{
+                      
+                      }
+                 }
                 v<%=stream.id%>["draggedagain"] == 'true';
+                
              }
            }
             $('button').removeAttr('disabled');
             });});
             
-            
+          
    streamArray.push(v<%=stream.id%>);
   <%end%>
    
