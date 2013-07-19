@@ -7,7 +7,7 @@
 <script>
 
 $(document).ready(function(){
-  
+  $( document ).tooltip({tooltipClass:"tooltips"});
   var storedlayout = JSON.parse(localStorage.getItem("streamlayout"));
   var chatposition = JSON.parse(localStorage.getItem("chatposition"));
   counter = 0;
@@ -175,7 +175,7 @@ function sortNumber(a,b){
   
   <br>
   <% @streamlist.each do |stream|%> 
-    <li id="channellist"><button id="channellist"class="channel-<%=stream.id%>" style="background: url(<%=stream.misc%>);background-size:100%;"></button></li>
+    <li id="channellist"><button id="channellist"class="channel-<%=stream.id%>" title="<%=stream.name%>" style="background: url(<%=stream.misc%>);background-size:100%;"></button></li>
     
   <%end%>
 </ul>
